@@ -9,7 +9,14 @@ const app = express();
 // ─── Middlewares globales ────────────────────────────────────────────────────
 
 // Habilitar CORS para que el frontend pueda consumir la API
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'https://aulas-uagrm.netlify.app'
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // Parsear el body de las peticiones como JSON
 app.use(express.json());
